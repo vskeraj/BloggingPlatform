@@ -125,5 +125,82 @@
           <li>Vesa Skeraj</li>
         </ul>
       </footer>
+
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    
+    <script>
+    
+      const data = {
+        labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'], // Ditet e javës
+        datasets: [{
+          label: 'Interactions with Profile',
+          data: [12, 19, 3, 5, 2, 3, 7],
+          backgroundColor: '#cbcfc8',
+          borderColor: '#e8decf',
+          borderWidth: 1
+        }]
+      };
+
+
+      const config = {
+        type: 'bar',
+        data: data,
+        options: {
+          responsive: true,
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      };
+
+      const myChart = new Chart(
+        document.getElementById('posts-chart'),
+        config
+      );
+
+      document.addEventListener('DOMContentLoaded', function() {
+
+const homeLink = document.getElementById('home-link');
+const postsLink = document.getElementById('posts-link');
+const statisticsLink = document.getElementById('statistics-link');
+const profileLink = document.getElementById('profile-link');
+const signupLink = document.getElementById('signup-link');
+const loginLink = document.getElementById('login-link');
+
+
+function redirectTo(pageUrl) {
+  window.location.href = pageUrl;
+}     
+
+homeLink.addEventListener('click', function() {
+  redirectTo('Homepage.html'); 
+});
+
+postsLink.addEventListener('click', function() {
+redirectTo('MyPosts.html'); 
+});
+
+statisticsLink.addEventListener('click', function() {
+redirectTo('Statistics.html');
+});
+
+profileLink.addEventListener('click', function() {
+redirectTo('Profile.html'); 
+});
+
+signupLink.addEventListener('click', function() {
+redirectTo('SignUp.html');
+});
+
+loginLink.addEventListener('click', function() {
+redirectTo('Login.html');
+});
+
+});
+    </script>
+    
   </body>
 </html>
