@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Statistics</title>
+    <link rel="stylesheet" href="Homepage.css" />
+    <style>
+
+      
+      #chart-container {
+        width: 100%;
+        max-width: 600px; /* Maksimumi i gjerësisë */
+        margin: 0 auto; /* E qendron grafikun në mes */
+        padding: 20px;
+        align-items:first baseline;
+      }
+
+      canvas {
+        width: 100% !important; /* Canvas merr tërë gjerësinë e container-it */
+        height: auto !important; /* I përshtatet lartësisë */
+      }
+
+      /* Container për seksionin e statistikave */
+      .statistics-section {
+        padding: 40px;
+      }
+
+      .sidebar {
+        flex: 0 1 30%; /* Sidebar merr 30% të gjerësisë */
+        padding: 20px;
+        background-color: #f1f1f1;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        max-width: 300px;
+        min-width: 250px;
+        margin-top: 50px;
+      }
+
+      .sidebar h3 {
+        margin-top: 0;
+        font-size: 20px;
+      }
+
+      .sidebar ul {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      .sidebar ul li {
+        padding: 8px 0;
+        border-bottom: 1px solid #ddd;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div id="navigimi">
+        <div id="nav-start" class="nav1">
+          <ul>
+            <li id="home-link">Home</li>
+            <li id="posts-link">My Posts</li>
+            <li id="statistics-link">Statistics</li>
+            <li id="profile-link">My Profile</li>
+          </ul>
+        </div>
+
+        <div id="nav-end" class="nav2">
+          <ul>
+            <li id="signup-link">Sign Up</li>
+            <li id="login-link">Log In</li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+        
+        <div class="statistics-section" id="statistics-section">
+          <h2>Statistics</h2>
+          
+          
+          <div id="streak-counter">
+            <p><strong>Current Streak of Interactions:</strong> <span id="streak-value">10</span> days</p>
+          </div>
+    
+          
+          <div id="chart-container">
+            <canvas id="posts-chart"></canvas>
+          </div>
+        </div>
+      </div>
+
+
+    <div class="sidebar">
+          <h3>Followers</h3>
+          <ul>
+            <li>Follower 1</li>
+            <li>Follower 2</li>
+            <li>Follower 3</li>
+            <li>Follower 4</li>
+            <li>Follower 5</li>
+            <li>Follower 6</li>
+            <li>Follower 7</li>
+            <li>Follower 8</li>
+          </ul>
+        </div>
+      </div>
+    </main>
+    
+
+    <footer>
+        <ul class="Reference">
+          <p>Help</p>
+          <li><a href=""></a>Help Center</li>
+          <li><a href=""></a>Ask Questions</li>
+        </ul>
+  
+        <ul class="Reference">
+          <p>About us</p>
+          <li>Phone number: 049 111 222</li>
+          <li>Email address: specialmoments@gmail.com</li>
+        </ul>
+  
+        <ul>
+          <p>Developers</p>
+          <li>Altina Musaj</li>
+          <li>Vesa Skeraj</li>
+        </ul>
+      </footer>
+  </body>
+</html>
