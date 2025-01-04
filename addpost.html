@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Post a New Article</title>
+    <link rel="stylesheet" href="addpost.css" />
+  </head>
+  <body>
+    <main>
+      <h2>Add a New Post</h2>
+      <form id="postForm">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" required /><br /><br />
+
+        <label for="content">Content:</label>
+        <textarea id="content" name="content" rows="4" required></textarea><br /><br />
+
+        <label for="author">Author:</label>
+        <input type="text" id="author" name="author" required /><br /><br />
+        
+        <label for="image">Image:</label>
+        <input type="file" id="image" name="image" accept="image/*" /><br /><br />
+
+        <button type="button" class="add-post" onclick="addPost()">Add Post</button>
+        <button type="button" class="delete-post" onclick="clearPostForm()">Delete</button>
+      </form>
+
+      <div id="postsContainer">
+        
+      </div>
+    </main>
+
+    <script>
+     document.getElementById('postForm').addEventListener('submit', function (event) {
+  event.preventDefault(); 
+
+  
+  const title = document.getElementById('title').value;
+  const content = document.getElementById('content').value;
+  const author = document.getElementById('author').value;
+  const imageFile = document.getElementById('image').files[0]; 
+
+  
+  const postDiv = document.createElement('div');
+  postDiv.classList.add('post');
+
+  
+  let postContent = `
+    <h2>${title}</h2>
+    <p><strong>Author:</strong> ${author}</p>
+    <p>${content}</p>
+  `;
+
+  
+  if (imageFile) {
+    const imageURL = URL.createObjectURL(imageFile);
+    postContent += `<img src="${imageURL}" alt="Post image" style=".container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 25px;
+  max-width: 1100px;
+  margin-top: 50px;
+  justify-content: center;
+}
+
+.image-container {
+  width: 100%;
+  height: 380px;
+  object-fit: contain;
+}
+
+.image-container img {
+  max-width: 100%;
+  max-height: 100%;
+  min-width: 100%;
+  min-height: 100%;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.main-info {
+  padding: 10px;
+  display: flex;
+  gap: 7px;
+  flex-direction: column;
+}
+
+p {
+  margin: 0px;
+}
+
+.claps {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+}
+
+.author {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: space-between;
+  color: #676666;
+  font-size: 14px;
+}
+
+.post {
+  width: 700px;
+  height: 600px;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1)
+}
+.read-more {
+  display: block; 
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #0f120f;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.read-more:hover {
+  background-color: #bebe79;
+}" />`;
+  }
+
+  postDiv.innerHTML = postContent;
+
+  
+  document.getElementById('postsContainer').appendChild(postDiv);
+
+  
+  document.getElementById('postForm').reset();
+});
+function clearPostForm() {
+  
+  document.getElementById('title').value = '';
+  document.getElementById('image').value = '';
+  document.getElementById('content').value = '';
+  document.getElementById('author').value = '';
+}
+
+
+function addPost() {
+  
+  const title = document.getElementById('title').value;
+  const content = document.getElementById('content').value;
+  const author = document.getElementById('author').value;
+  const image = document.getElementById('image').files[0];
+
+  
+  if (!title || !content || !author || !image) {
+    alert('Please fill in all fields!');
+    return;
+  }
+
+ 
+  const postContainer = document.createElement('div');
+  postContainer.classList.add('post');
+  
+  const imageElement = document.createElement('img');
+  imageElement.src = image ? URL.createObjectURL(image) : 'default-image.jpg'; 
+  imageElement.alt = title;
+
+  const titleElement = document.createElement('h4');
+  titleElement.textContent = title;
+
+  const contentElement = document.createElement('p');
+  contentElement.textContent = content;
+
+  postContainer.appendChild(imageElement);
+  postContainer.appendChild(titleElement);
+  postContainer.appendChild(contentElement);
+
+  const postsContainer = document.getElementById('postsContainer');
+  postsContainer.appendChild(postContainer);
+
+  
+  window.location.href = 'MyPosts.html';
+}
+
+
+
+    </script>
+  </body>
+</html>
