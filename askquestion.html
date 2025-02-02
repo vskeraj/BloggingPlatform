@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="form-container">
+        <h1>Contact Us</h1>
+        <!-- Form will send data to send_email.php -->
+        <form action="sendemail.php" method="POST">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" required placeholder="Enter your name">
+
+            <label for="email">Your Email:</label>
+            <input type="email" id="email" name="email" required placeholder="Enter your email">
+
+            <label for="question">Your Question:</label>
+            <textarea id="question" name="question" rows="4" required placeholder="Type your question"></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+<style>
+/* Basic styles for body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7f6;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Container for the form */
+.form-container {
+    background-color: white;
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+}
+
+/* Styling the heading */
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Form label styles */
+label {
+    font-weight: bold;
+    color: #555;
+    display: block;
+    margin-top: 10px;
+}
+
+/* Input field styles */
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Styling the submit button */
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Button hover effect */
+button:hover {
+    background-color: #45a049;
+}
+
+/* Placeholder text style */
+input::placeholder, textarea::placeholder {
+    color: #aaa;
+}
+</style>
+</body>
+</html>
