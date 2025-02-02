@@ -33,7 +33,7 @@
             <div class="post">
               <div class="image-container">
                 <img
-                  src="c:\Users\Hp\OneDrive\Desktop\ushtrime\fotoepare.jpg"
+                  src="assets/fotoepare.jpg"
                   alt=""
                 />
               </div>
@@ -42,7 +42,7 @@
                 <div class="author">
                   <p>Altina Musaj</p>
                   <div class="claps">
-                    <img src="c:\Users\Hp\OneDrive\Desktop\ushtrime\clap.svg" alt="" />
+                    <img src="assets/clap.svg" alt="" />
                     <p>54</p>
                     
                   </div>
@@ -50,7 +50,7 @@
                 <div>
                   <p>I start my day with coffee, a quick stretch, and a to-do list. It’s a small routine, but it keeps me focused and energized all day</p>
                 </div>
-                <button class="read-more" onclick="window.location.href='postipare.html'">Read More</button> 
+                <button class="read-more" onclick="window.location.href='postipare.php'">Read More</button> 
               </div>
             </div>
             
@@ -58,7 +58,7 @@
             <div class="post">
               <div class="image-container">
                 <img
-                  src="c:\Users\Hp\OneDrive\Desktop\ushtrime\fotoedyte.jpg"
+                  src="assets/fotoedyte.jpg"
                   alt=""
                 />
               </div>
@@ -67,7 +67,7 @@
                 <div class="author">
                   <p>Altina Musaj</p>
                   <div class="claps">
-                    <img src="c:\Users\Hp\OneDrive\Desktop\ushtrime\clap.svg" alt="" />
+                    <img src="assets/clap.svg" alt="" />
                     <p>20</p>
                     
                   </div>
@@ -86,7 +86,7 @@
             <div class="post">
               <div class="image-container">
                 <img
-                  src="c:\Users\Hp\OneDrive\Desktop\ushtrime\fotoetrete.jpg"
+                  src="assets/fotoetrete.jpg"
                   alt=""
                 />
               </div>
@@ -95,7 +95,7 @@
                 <div class="author">
                   <p>Altina Musaj</p>
                   <div class="claps">
-                    <img src="c:\Users\Hp\OneDrive\Desktop\ushtrime\clap.svg" alt="" />
+                    <img src="assets/clap.svg" alt="" />
                     <p>54</p>
                     
                   </div>
@@ -111,7 +111,7 @@
             <div class="post">
               <div class="image-container">
                 <img
-                  src="c:\Users\Hp\OneDrive\Desktop\ushtrime\fotoekatert.jpg"
+                  src="assets/fotoekatert.jpg"
                   alt=""
                 />
               </div>
@@ -120,7 +120,7 @@
                 <div class="author">
                   <p>Altina Musaj</p>
                   <div class="claps">
-                    <img src="c:\Users\Hp\OneDrive\Desktop\ushtrime\clap.svg" alt="" />
+                    <img src="assets/clap.svg" alt="" />
                     <p>54</p>
                     
                   </div>
@@ -136,7 +136,7 @@
             <div class="post">
               <div class="image-container">
                 <img
-                  src="c:\Users\Hp\OneDrive\Desktop\ushtrime\fotoepeste.jpg"
+                  src="assets/fotoepeste.jpg"
                   alt=""
                 />
               </div>
@@ -145,7 +145,7 @@
                 <div class="author">
                   <p>Altina Musaj</p>
                   <div class="claps">
-                    <img src="c:\Users\Hp\OneDrive\Desktop\ushtrime\clap.svg" alt="" />
+                    <img src="assets/clap.svg" alt="" />
                     <p>54</p>
                     
                   </div>
@@ -168,8 +168,8 @@
     <footer>
       <ul class="Reference">
         <p>Help</p>
-        <li><a href=""></a>Help Center</li>
-        <li><a href=""></a>Ask Questions</li>
+        <li><a href="helpcenter.html">Help Center</a></li>
+        <li><a href="askquestion.html">Ask Questions</a></li>
       </ul>
 
       <ul class="Reference">
@@ -184,7 +184,10 @@
         <li>Vesa Skeraj</li>
       </ul>
     </footer>
-
+    </body>
+    <div id="postsContainer">
+      <!-- Postimet do të shfaqen këtu -->
+    </div>
     <script>
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -233,56 +236,46 @@ privateTabs.forEach((tab)=> {
 tab.classList.remove("hidden");
 
 });
+ß
+// Funksioni për të ngarkuar postet nga localStorage
+function loadPosts() {
+    var posts = JSON.parse(localStorage.getItem('posts')) || [];
+    var postContainer = document.getElementById('postsContainer');
+    postContainer.innerHTML = ''; // Pastro përmbajtjen ekzistuese
 
-else
+    if (posts.length === 0) {
+        postContainer.innerHTML = "<p>No posts available.</p>";
+        return;
+    }
 
-privateTabs.forEach((tab)=> {
-
-tab.classList.add("hidden");
-
-});
-
-};
-
-const toggleGuestElementsVisibility = (isVisible)=> {
-
-console.log('comes here!!')
-
-console.log('isVisible',
-isVisible)
-
-console.log('guestElements: ',
-guestElements)
-
-if (isVisible)
-
-guestElements.forEach((tab)=> {
-
-tab.classList.remove("hidden");
-
-});
-
-else
-
-guestElements.forEach((tab)=> {
-
-tab.classList.add("hidden");
-
-});
-
-};
-
-      const isSignedUp = localStorage.getItem('isSignedUp')
-
-if(isSignedUp){
-
-togglePrivateTabsVisibility(true)
-
-toggleGuestElementsVisibility(false)
-
+    posts.forEach((post, index) => {
+        const newPost = document.createElement('div');
+        newPost.classList.add('post');
+        newPost.innerHTML = `
+            <div class="image-container">
+                <img src="${post.image}" alt="Post Image" />
+            </div>
+            <div class="main-info">
+                <h3>${post.title}</h3>
+                <p>${post.content}</p>
+                <p><strong>Author:</strong> ${post.author}</p>
+                <button class="delete-post" onclick="deletePost(${index})">Delete</button>
+            </div>
+        `;
+        postContainer.appendChild(newPost);
+    });
 }
-      });
 
-    </script>
-  </body>
+// Funksioni për të fshirë një post
+function deletePost(index) {
+    var posts = JSON.parse(localStorage.getItem('posts')) || [];
+    posts.splice(index, 1); // Fshij postin
+    localStorage.setItem('posts', JSON.stringify(posts)); // Përditëso localStorage
+    loadPosts(); // Rifresko listën e postimeve
+}
+
+</script>
+
+</body>
 </html>
+

@@ -9,18 +9,21 @@
 <body>
     <div class="form-container">
         <h2>Sign Up</h2>
-        <form id="signup-form">
+        <form id="signup-form" method="post" action="SignUp.php">
             <label for="first-name">Name</label>
-            <input type="text" id="first-name" placeholder="Your name" required />
+            <input type="text" id="first-name" name="first_name" placeholder="Your name" required />
 
             <label for="last-name">Surname</label>
-            <input type="text" id="last-name" placeholder="Your surname" required />
+            <input type="text" id="last-name" name="last_name" placeholder="Your surname" required />
 
             <label for="email">Email</label>
-            <input type="email" id="email" placeholder="Your email" required />
+            <input type="email" id="email" name="email" placeholder="Your email" required />
 
             <label for="phone">Phone</label>
-            <input type="tel" id="phone" placeholder="Your phone number" required />
+            <input type="tel" id="phone" name="phone" placeholder="Your phone number" required />
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Your password" required />
 
             <button type="submit">Submit</button>
         </form>
@@ -28,46 +31,37 @@
 
     <script>
         document.getElementById('signup-form').addEventListener('submit', function(event) {
-            event.preventDefault(); 
+    // Verifikimi i të dhënave në JavaScript
+    const firstName = document.getElementById('first-name').value.trim();
+    const lastName = document.getElementById('last-name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const password = document.getElementById('password').value.trim();
 
-            const firstName = document.getElementById('first-name').value.trim();
-            const lastName = document.getElementById('last-name').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const phone = document.getElementById('phone').value.trim();
-
-           
-            if (firstName === '' || lastName === '' || email === '' || phone === '') {
-                alert('All fields must be filled out.');
-                return;
-            }
-
-            
-            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailPattern.test(email)) {
-                alert('Please enter a valid email address.');
-                return;
-            }
-
-            
-            const phonePattern = /^[0-9]{9}$/;
-            if (!phonePattern.test(phone)) {
-                alert('Please enter a valid phone number (9 digits).');
-                return;
-            }
-
-           
-            alert('Sign up complete!');
-          
-
-            if (window.confirm('Sign up complete! Click OK to continue to MyPosts.html.')) {
-        
-        window.location.href = 'MyPosts.html';
-
-        
-        localStorage.setItem("isSignedUp", true);
+    if (firstName === '' || lastName === '' || email === '' || phone === '' || password === '') {
+        alert('All fields must be filled out.');
+        event.preventDefault(); 
+        return;
     }
 
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+        alert('Please enter a valid email address.');
+        event.preventDefault();
+        return;
+    }
+
+    const phonePattern = /^[0-9]{9}$/;
+    if (!phonePattern.test(phone)) {
+        alert('Please enter a valid phone number (9 digits).');
+        event.preventDefault();
+        return;
+    }
+        
 });
+
+
+ 
 
     </script>
 </body>

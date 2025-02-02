@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Center</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .accordion {
+            background-color: #f1f1f1;
+            color: #444;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 18px;
+            transition: 0.4s;
+            margin-bottom: 10px;
+        }
+
+        .accordion:hover {
+            background-color: #ddd;
+        }
+
+        .active, .accordion:focus {
+            background-color: #ccc;
+        }
+
+        .panel {
+            padding: 0 18px;
+            display: none;
+            background-color: #fff;
+            overflow: hidden;
+            border-left: 2px solid #ccc;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .panel p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Help Center</h1>
+
+    <!-- Problem 1 -->
+    <button class="accordion">How to create a blog post?</button>
+    <div class="panel">
+        <p>To create a blog post, go to your dashboard, click on "Create New Post," fill out the title and content, and click "Publish."</p>
+    </div>
+
+    <!-- Problem 2 -->
+    <button class="accordion">How to update my profile?</button>
+    <div class="panel">
+        <p>To update your profile, click on "Profile" in the navigation menu, then click "Edit Profile." You can change your username, bio, and profile picture.</p>
+    </div>
+
+    <!-- Problem 3 -->
+    <button class="accordion">How to delete a post?</button>
+    <div class="panel">
+        <p>To delete a post, go to your dashboard, find the post you want to delete, and click on the "Delete" button next to it.</p>
+    </div>
+
+    <!-- Problem 4 -->
+    <button class="accordion">How can I reset my password?</button>
+    <div class="panel">
+        <p>To reset your password, click on "Forgot Password" at the login screen. You'll receive an email with instructions to reset your password.</p>
+    </div>
+
+    <!-- Problem 5 -->
+    <button class="accordion">How can I contact support?</button>
+    <div class="panel">
+        <p>You can contact support by going to the Help Center and filling out the contact form, or by emailing support@yourwebsite.com.</p>
+    </div>
+
+    <!-- Problem 6 -->
+    <button class="accordion">How to change my email address?</button>
+    <div class="panel">
+        <p>To change your email, go to your profile settings, select "Edit Profile," and update your email address.</p>
+    </div>
+
+    <!-- Problem 7 -->
+    <button class="accordion">How to add tags to a post?</button>
+    <div class="panel">
+        <p>To add tags, go to your blog post editor and find the "Tags" section. Enter relevant keywords and separate them by commas.</p>
+    </div>
+
+    <!-- Problem 8 -->
+    <button class="accordion">How to upload images to my post?</button>
+    <div class="panel">
+        <p>Click on the "Insert Image" button in the post editor. You can upload images from your computer or add a URL to an image.</p>
+    </div>
+
+    <!-- Problem 9 -->
+    <button class="accordion">How to change my profile picture?</button>
+    <div class="panel">
+        <p>To change your profile picture, go to your profile, click "Edit Profile," and upload a new image in the profile picture section.</p>
+    </div>
+
+    <!-- Problem 10 -->
+    <button class="accordion">How to enable two-factor authentication?</button>
+    <div class="panel">
+        <p>To enable two-factor authentication, go to your account settings, find the "Security" section, and follow the instructions to enable 2FA.</p>
+    </div>
+
+</div>
+
+<script>
+    // Get all accordion buttons
+    var acc = document.getElementsByClassName("accordion");
+
+    // Loop through all accordion buttons
+    for (var i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.display === "block") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
+            }
+        });
+    }
+</script>
+
+</body>
+</html>

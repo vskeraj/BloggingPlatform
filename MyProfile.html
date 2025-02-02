@@ -74,16 +74,17 @@
                 <div class="form-actions">
                     <button type="submit" class="update-btn">Update</button>
                     <button type="button" class="cancel-btn">Cancel</button>
+                    <button id="delete-account-btn">Delete Account</button>
                 </div>
             </form>
         </div>
     </div>
     <footer>
         <ul class="Reference">
-          <p>Help</p>
-          <li><a href=""></a>Help Center</li>
-          <li><a href=""></a>Ask Questions</li>
-        </ul>
+            <p>Help</p>
+            <li><a href="helpcenter.html">Help Center</a></li>
+            <li><a href="askquestion.html">Ask Questions</a></li>
+          </ul>
   
         <ul class="Reference">
           <p>About us</p>
@@ -97,66 +98,100 @@
           <li>Vesa Skeraj</li>
         </ul>
       </footer>
-    <script >
-        const form = document.getElementById('account-form');
-const updateButton = document.querySelector('.update-btn');
-const cancelButton = document.querySelector('.cancel-btn');
+    <script>
 
 
-const initialValues = {
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    company: "",
-    designation: "",
-    bio: ""
-};
 
+const form = document.getElementById('account-form');
+        const updateButton = document.querySelector('.update-btn');
+        const cancelButton = document.querySelector('.cancel-btn');
+        const profilePicture = document.getElementById('profile-picture');
+        const uploadInput = document.getElementById('upload-picture');
 
-function loadInitialValues() {
-    document.getElementById('first-name').value = initialValues.firstName;
-    document.getElementById('last-name').value = initialValues.lastName;
-    document.getElementById('email').value = initialValues.email;
-    document.getElementById('phone').value = initialValues.phone;
-    document.getElementById('company').value = initialValues.company;
-    document.getElementById('designation').value = initialValues.designation;
-    document.getElementById('bio').value = initialValues.bio;
-}
-
-
-updateButton.addEventListener('click', function(event) {
-    event.preventDefault(); 
-    alert('Account updated successfully!');
-    
-});
-
-
-cancelButton.addEventListener('click', function(event) {
-    event.preventDefault(); 
-    const confirmReset = confirm('Are you sure you want to reset the changes?');
-    if (confirmReset) {
-        loadInitialValues();
-    }
-});
-
-
-loadInitialValues();
-
-const profilePicture = document.getElementById('profile-picture');
-const uploadInput = document.getElementById('upload-picture');
-
-
-uploadInput.addEventListener('change', function () {
-    const file = uploadInput.files[0]; 
-    if (file) {
-        const reader = new FileReader(); 
-        reader.onload = function (e) {
-            profilePicture.src = e.target.result; 
+        const initialValues = {
+            firstName: "",
+            lastName: "",
+            email: "",
+            phone: "",
+            company: "",
+            designation: "",
+            bio: ""
         };
-        reader.readAsDataURL(file); 
+
+        function loadInitialValues() {
+            document.getElementById('first-name').value = initialValues.firstName;
+            document.getElementById('last-name').value = initialValues.lastName;
+            document.getElementById('email').value = initialValues.email;
+            document.getElementById('phone').value = initialValues.phone;
+            document.getElementById('company').value = initialValues.company;
+            document.getElementById('designation').value = initialValues.designation;
+            document.getElementById('bio').value = initialValues.bio;
+            profilePicture.style.display = "none"; // Hide profile picture
+            uploadInput.value = ""; // Clear file input
+        }
+
+        updateButton.addEventListener('click', function (event) {
+            event.preventDefault(); 
+            
+            // Validate email
+            const emailInput = document.getElementById('email');
+            if (!emailInput.value.includes('@')) {
+                alert('Please enter a valid email address with "@"');
+                return;
+            }
+
+            alert('Account updated successfully!');
+            form.reset(); // Clear all fields
+            profilePicture.style.display = "none"; // Hide profile picture
+        });
+
+        cancelButton.addEventListener('click', function (event) {
+            event.preventDefault(); 
+            const confirmReset = confirm('Are you sure you want to reset the changes?');
+            if (confirmReset) {
+                loadInitialValues();
+            }
+        });
+
+        uploadInput.addEventListener('change', function () {
+            const file = uploadInput.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    profilePicture.src = e.target.result;
+                    profilePicture.style.display = "block"; 
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+         loadInitialValues();
+        document.getElementById('delete-account-btn').addEventListener('click', function() {
+    if (confirm("Are you sure you want to delete your account? This action is irreversible.")) {
+        // Dërgo kërkesën për të fshirë përdoruesin
+        fetch('deleteUser.php', {
+            method: 'POST',
+            body: JSON.stringify({ userId: '123' }),  // Zëvendësoni '123' me ID-në e përdoruesit të cilin dëshironi ta fshini
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert("Your account has been deleted.");
+                window.location.href = 'goodbye.html'; // Rruga kur përdoruesi fshihet
+            } else {
+                alert("Failed to delete account. Please try again.");
+            }
+        })
+        .catch(error => console.error('Error:', error));
     }
 });
+
+    </script>
+</body>
+</html>
 
     </script>
 </body>
