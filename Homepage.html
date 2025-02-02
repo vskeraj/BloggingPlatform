@@ -1,34 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <link rel="stylesheet" href="Homepage.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!--just a test-->
-</head>
-<body>
+  <link rel="stylesheet" href="Homepage.css" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BlogHomePage</title>
+  </head>
+  <body>
     <header>
-        <div id="navigimi">
-          <div id="nav-start" class="nav1">
-            <ul>
-              <li id="home-link">Home</li>
-              <li id="posts-link" class="hidden" requires-auth>My Posts</li>
-              <li id="statistics-link" class="hidden" requires-auth>Statistics</li>
-              <li id="profile-link" class="hidden" requires-auth>My Profile</li>
-            </ul>
-          </div>
-  
-          <div id="nav-end" class="nav2">
-            <ul>
-              <li id="signup-link" guest>Sign Up</li>
-              <li id="login-link" guest>Log In</li>
-            </ul>
-          </div>
+      <div id="navigimi">
+        <div id="nav-start" class="nav1">
+          <ul>
+            <li id="home-link">Home</li>
+            <li id="explore-link">Explore</li>
+            <li id="posts-link" class="hidden" requires-auth>My Posts</li>
+            <li id="statistics-link" class="hidden" requires-auth>Statistics</li>
+            <li id="profile-link" class="hidden" requires-auth>My Profile</li>
+          </ul>
         </div>
-      </header>
-  
-      <main>
+
+        <div id="nav-end" class="nav2">
+          <ul>
+            <li id="signup-link" guest>Sign Up</li>
+            <li id="login-link" guest>Log In</li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="carousel-container">
+        <div class="arrow go-left"><img src="./assets/left-arrow.svg" /></div>
+        <div class="arrow go-right"><img src="./assets/right-arrow.svg" /></div>
+
         <div class="container">
           <div class="post">
             <div class="image-container">
@@ -38,7 +42,9 @@
               />
             </div>
             <div class="main-info">
-              <p class="desc ellipse">"White Nights" ~ Dostoyevski</p>
+              <a href=""
+                ><p class="desc ellipse">"White Nights" ~ Dostoyevski</p></a
+              >
               <div class="author">
                 <p>Vesa Skeraj</p>
                 <div class="claps">
@@ -51,12 +57,14 @@
           <div class="post">
             <div class="image-container">
               <img
-                src="./assets/B.jpg"
-                alt=""
+              src="./assets/B.jpg"
+              alt=""
               />
             </div>
             <div class="main-info">
-              <p class="desc ellipse">Parisian Evenings</p>
+              <a href=""
+                ><p class="desc ellipse">Parisian Evenings</p></a
+              >
               <div class="author">
                 <p>Altina Musaj</p>
                 <div class="claps">
@@ -69,12 +77,12 @@
           <div class="post">
             <div class="image-container">
               <img
-                src="./assets/C.jpeg"
-                alt=""
+              src="./assets/B1.jpeg"
+              alt=""
               />
             </div>
             <div class="main-info">
-              <p class="desc ellipse">It's frappe season!</p>
+              <a href=""><p class="desc ellipse">It's frappe season!</p></a>
               <div class="author">
                 <p>Vesa Skeraj</p>
                 <div class="claps">
@@ -86,13 +94,14 @@
           </div>
           <div class="post">
             <div class="image-container">
-              <img
-                src="./assets/B1.jpeg"
-                alt=""
+              <img 
+              src="./assets/C.jpeg"alt=""
               />
             </div>
             <div class="main-info">
-              <p class="desc ellipse">To all my sweet ppl out there...</p>
+              <a
+                ><p class="desc ellipse">To all my sweet ppl out there...</p></a
+              >
               <div class="author">
                 <p>Vesa Skeraj</p>
                 <div class="claps">
@@ -105,12 +114,16 @@
           <div class="post">
             <div class="image-container">
               <img
-                src="./assets/E.jpg"
+              src="./assets/E.jpg"
                 alt=""
               />
             </div>
             <div class="main-info">
-              <p class="desc ellipse">Movie Night out with my homegirls</p>
+              <a
+                ><p class="desc ellipse">
+                  Movie Night out with my homegirls
+                </p></a
+              >
               <div class="author">
                 <p>Altina Musaj</p>
                 <div class="claps">
@@ -123,12 +136,12 @@
           <div class="post">
             <div class="image-container">
               <img
-                src="./assets/W.webp"
+              src="./assets/G.jpeg"
                 alt=""
               />
             </div>
             <div class="main-info">
-              <p class="desc ellipse">Waffles over pancakes.</p>
+              <a><p class="desc ellipse">Waffles over pancakes.</p></a>
               <div class="author">
                 <p>Altina Musaj</p>
                 <div class="claps">
@@ -141,12 +154,12 @@
           <div class="post">
             <div class="image-container">
               <img
-                src="./assets/G.jpeg"
+              src="./assets/V.jpg"
                 alt=""
               />
             </div>
             <div class="main-info">
-              <p class="desc ellipse">Coffee is life.</p>
+              <a><p class="desc ellipse">Coffee is life.</p></a>
               <div class="author">
                 <p>Altina Musaj</p>
                 <div class="claps">
@@ -159,12 +172,16 @@
           <div class="post">
             <div class="image-container">
               <img
-                src="./assets/V.jpg"
+                src="/Users/vesaskeraj/Desktop/Web dev/assets/yay.png"
                 alt=""
               />
             </div>
             <div class="main-info">
-              <p class="desc ellipse">The safest countries to travel solo</p>
+              <a
+                ><p class="desc ellipse">
+                  The safest countries to travel solo
+                </p></a
+              >
               <div class="author">
                 <p>Vesa Skeraj</p>
                 <div class="claps">
@@ -174,152 +191,170 @@
               </div>
             </div>
           </div>
+          <div class="post">
+            <div class="image-container">
+              <img
+              src="./assets/W.webp"
+                alt=""
+              />
+            </div>
+            <div class="main-info">
+              <a
+                ><p class="desc ellipse">
+                  The safest countries to travel solo
+                </p></a
+              >
+              <div class="author">
+                <p>Vesa Skeraj</p>
+                <div class="claps">
+                  <img src="./assets/clap.svg" alt="" />
+                  <p>26</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </main>
-  
-      <footer>
-        <ul class="Reference">
-          <p>Help</p>
-          <li><a href=""></a>Help Center</li>
-          <li><a href=""></a>Ask Questions</li>
-        </ul>
-  
-        <ul class="Reference">
-          <p>About us</p>
-          <li>Phone number: 049 111 222</li>
-          <li>Email address: specialmoments@gmail.com</li>
-        </ul>
-  
-        <ul>
-          <p>Developers</p>
-          <li>Altina Musaj</li>
-          <li>Vesa Skeraj</li>
-        </ul>
-      </footer>
+      </div>
+    </main>
 
-      <script>
-        document.addEventListener("DOMContentLoaded", function () {
-          const homeLink = document.getElementById("home-link");
-          const exploreLink = document.getElementById("explore-link");
-          const postsLink = document.getElementById("posts-link");
-          const statisticsLink = document.getElementById("statistics-link");
-          const profileLink = document.getElementById("profile-link");
-          const signupLink = document.getElementById("signup-link");
-          const loginLink = document.getElementById("login-link");
-          const privateTabs = document.querySelectorAll("[requires-auth]");
-          const guestElements = document.querySelectorAll("[guest]");
-          const postCards = document.querySelectorAll(".post");
-          const goLeft = document.querySelector(".go-left");
-          const goRight = document.querySelector(".go-right");
-  
-          function redirectTo(pageUrl) {
-            window.location.href = pageUrl;
-          }
-  
-          homeLink.addEventListener("click", function () {
-            redirectTo("Homepage.html"); // Shko ne Homepage
-          });
-  
-          exploreLink.addEventListener("click", function () {
-            redirectTo("Explore.html"); // Shko te explore
-          });
-  
-          postsLink.addEventListener("click", function () {
-            redirectTo("MyPosts.html"); // Shko ne My Posts
-          });
-  
-          statisticsLink.addEventListener("click", function () {
-            redirectTo("Statistics.html"); // Shko ne Statistics
-          });
-  
-          profileLink.addEventListener("click", function () {
-            redirectTo("Profile.html"); // Shko ne Profile
-          });
-  
-          signupLink.addEventListener("click", function () {
-            redirectTo("SignUp.html"); // Shko ne Sign Up
-          });
-  
-          loginLink.addEventListener("click", function () {
-            redirectTo("Login.html"); // Shko ne Login
-          });
-  
-          const togglePrivateTabsVisibility = (isVisible) => {
-            if (isVisible)
-              privateTabs.forEach((tab) => {
-                tab.classList.remove("hidden");
-              });
-            else
-              privateTabs.forEach((tab) => {
-                tab.classList.add("hidden");
-              });
-          };
-  
-          const toggleGuestElementsVisibility = (isVisible) => {
-            console.log("comes here!!");
-            console.log("isVisible", isVisible);
-            console.log("guestElements: ", guestElements);
-            if (isVisible)
-              guestElements.forEach((tab) => {
-                tab.classList.remove("hidden");
-              });
-            else
-              guestElements.forEach((tab) => {
-                tab.classList.add("hidden");
-              });
-          };
-  
-          const isLoggedIn = localStorage.getItem("isLoggedIn");
-          if (isLoggedIn) {
-            togglePrivateTabsVisibility(true);
-            toggleGuestElementsVisibility(false);
-          }
-  
-          ////////////////carousel part//////////////////////
-  
-          const toggleVisiblePosts = (startAt) => {
-            const visiblePostsIndexes = [];
-            for (let i = 0; i < postsToShow; i++) {
-              const position = i + startAt;
-              if (position < postCards.length) visiblePostsIndexes.push(position);
-              else visiblePostsIndexes.push(position % postCards.length);
-            }
-            console.log("visiblePostsIndexes", visiblePostsIndexes);
-            postCards.forEach((post, index) => {
-              if (visiblePostsIndexes.includes(index))
-                post.classList.remove("hidden");
-              else post.classList.add("hidden");
-            });
-          };
-  
-          let postsToShow = 3;
-          let startAt = 0;
-  
-          if(window.screen.width <= 768) postsToShow = 1
-          else if(window.screen.width > 768 && window.screen.width <= 1200) postsToShow = 2
-          else postsToShow = 3
-  
-          toggleVisiblePosts(startAt);
-  
-          goLeft.addEventListener("click", function () {
-            if (startAt - postsToShow < 0)
-              startAt = postCards.length + (startAt - postsToShow);
-            else startAt = startAt - postsToShow;
-  
-            toggleVisiblePosts(startAt)
-          });
-  
-          goRight.addEventListener('click', function(){
-            if(startAt + postsToShow === postCards.length -1) startAt = 0
-            else startAt = startAt + postsToShow
-  
-            toggleVisiblePosts(startAt)
-          })
-  
-          ///////////////end of carousel////////////////////
+    <footer>
+      <ul class="Reference">
+        <p>Help</p>
+        <li><a href=""></a>Help Center</li>
+        <li><a href=""></a>Ask Questions</li>
+      </ul>
+
+      <ul class="Reference">
+        <p>About us</p>
+        <li>Phone number: 049 111 222</li>
+        <li>Email address: specialmoments@gmail.com</li>
+      </ul>
+
+      <ul>
+        <p>Developers</p>
+        <li>Altina Musaj</li>
+        <li>Vesa Skeraj</li>
+      </ul>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const homeLink = document.getElementById("home-link");
+        const exploreLink = document.getElementById("explore-link");
+        const postsLink = document.getElementById("posts-link");
+        const statisticsLink = document.getElementById("statistics-link");
+        const profileLink = document.getElementById("profile-link");
+        const signupLink = document.getElementById("signup-link");
+        const loginLink = document.getElementById("login-link");
+        const privateTabs = document.querySelectorAll("[requires-auth]");
+        const guestElements = document.querySelectorAll("[guest]");
+        const postCards = document.querySelectorAll(".post");
+        const goLeft = document.querySelector(".go-left");
+        const goRight = document.querySelector(".go-right");
+
+        function redirectTo(pageUrl) {
+          window.location.href = pageUrl;
+        }
+
+        homeLink.addEventListener("click", function () {
+          redirectTo("Homepage.html"); // Shko ne Homepage
         });
-      </script>
 
-</body>
+        exploreLink.addEventListener("click", function () {
+          redirectTo("Explore.html"); // Shko te explore
+        });
+
+        postsLink.addEventListener("click", function () {
+          redirectTo("MyPosts.html"); // Shko ne My Posts
+        });
+
+        statisticsLink.addEventListener("click", function () {
+          redirectTo("Statistics.html"); // Shko ne Statistics
+        });
+
+        profileLink.addEventListener("click", function () {
+          redirectTo("Profile.html"); // Shko ne Profile
+        });
+
+        signupLink.addEventListener("click", function () {
+          redirectTo("SignUp.html"); // Shko ne Sign Up
+        });
+
+        loginLink.addEventListener("click", function () {
+          redirectTo("Login2.html"); // Shko ne Login
+        });
+
+        const togglePrivateTabsVisibility = (isVisible) => {
+          if (isVisible)
+            privateTabs.forEach((tab) => {
+              tab.classList.remove("hidden");
+            });
+          else
+            privateTabs.forEach((tab) => {
+              tab.classList.add("hidden");
+            });
+        };
+
+        const toggleGuestElementsVisibility = (isVisible) => {
+          console.log("comes here!!");
+          console.log("isVisible", isVisible);
+          console.log("guestElements: ", guestElements);
+          if (isVisible)
+            guestElements.forEach((tab) => {
+              tab.classList.remove("hidden");
+            });
+          else
+            guestElements.forEach((tab) => {
+              tab.classList.add("hidden");
+            });
+        };
+
+        const isLoggedIn = localStorage.getItem("isLoggedIn");
+        if (isLoggedIn) {
+          togglePrivateTabsVisibility(true);
+          toggleGuestElementsVisibility(false);
+        }
+
+
+        const toggleVisiblePosts = (startAt) => {
+          const visiblePostsIndexes = [];
+          for (let i = 0; i < postsToShow; i++) {
+            const position = i + startAt;
+            if (position < postCards.length) visiblePostsIndexes.push(position);
+            else visiblePostsIndexes.push(position % postCards.length);
+          }
+          console.log("visiblePostsIndexes", visiblePostsIndexes);
+          postCards.forEach((post, index) => {
+            if (visiblePostsIndexes.includes(index))
+              post.classList.remove("hidden");
+            else post.classList.add("hidden");
+          });
+        };
+
+        let postsToShow = 3;
+        let startAt = 0;
+
+        if(window.screen.width <= 768) postsToShow = 1
+        else if(window.screen.width > 768 && window.screen.width <= 1200) postsToShow = 2
+        else postsToShow = 3
+
+        toggleVisiblePosts(startAt);
+
+        goLeft.addEventListener("click", function () {
+          if (startAt - postsToShow < 0)
+            startAt = postCards.length + (startAt - postsToShow);
+          else startAt = startAt - postsToShow;
+
+          toggleVisiblePosts(startAt)
+        });
+
+        goRight.addEventListener('click', function(){
+          if(startAt + postsToShow === postCards.length -1) startAt = 0
+          else startAt = startAt + postsToShow
+
+          toggleVisiblePosts(startAt)
+        })
+      });
+    </script>
+  </body>
 </html>

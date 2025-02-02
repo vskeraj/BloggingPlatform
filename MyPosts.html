@@ -12,9 +12,10 @@
         <div id="nav-start" class="nav1">
           <ul>
             <li id="home-link">Home</li>
-            <li id="posts-link">My Posts</li>
-            <li id="statistics-link">Statistics</li>
-            <li id="profile-link">My Profile</li>
+            <li id="explore-link">Explore</li>
+            <li id="posts-link" class="hidden" requires-auth>My Posts</li>
+            <li id="statistics-link" class="hidden" requires-auth>Statistics</li>
+            <li id="profile-link" class="hidden" requires-auth>My Profile</li>
           </ul>
         </div>
 
@@ -186,28 +187,25 @@
 
     <script>
 
-      document.addEventListener('DOMContentLoaded', function() {
-
-        const homeLink = document.getElementById('home-link');
-        const postsLink = document.getElementById('posts-link');
-        const statisticsLink = document.getElementById('statistics-link');
-        const profileLink = document.getElementById('profile-link');
-        const signupLink = document.getElementById('signup-link');
-        const loginLink = document.getElementById('login-link');
-        const guestElements = document.querySelectorAll("[guest]")
-
+document.addEventListener("DOMContentLoaded", function () {
+        const homeLink = document.getElementById("home-link");
+        const exploreLink = document.getElementById("explore-link");
+        const postsLink = document.getElementById("posts-link");
+        const statisticsLink = document.getElementById("statistics-link");
+        const profileLink = document.getElementById("profile-link");
+        const signupLink = document.getElementById("signup-link");
+        const loginLink = document.getElementById("login-link");
 
         function redirectTo(pageUrl) {
           window.location.href = pageUrl;
-        }     
+        }
 
-        homeLink.addEventListener('click', function() {
-          redirectTo('Homepage.html');
+        homeLink.addEventListener("click", function () {
+          redirectTo("Homepage.html"); // Shko ne Homepage
         });
 
-      postsLink.addEventListener('click', function() {
-        redirectTo('MyPosts.html');
-      });
+        exploreLink.addEventListener("click", function () {
+          redirectTo("Explore.html"); // Shko te explore
 
       statisticsLink.addEventListener('click', function() {
         redirectTo('Statistics.html'); 
