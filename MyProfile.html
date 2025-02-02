@@ -73,6 +73,7 @@
                 <div class="form-actions">
                     <button type="submit" class="update-btn">Update</button>
                     <button type="button" class="cancel-btn">Cancel</button>
+                    <button id="delete-account-btn">Delete Account</button>
                 </div>
             </form>
         </div>
@@ -163,8 +164,30 @@ const form = document.getElementById('account-form');
             }
         });
 
-        
-        loadInitialValues();
+         loadInitialValues();
+        document.getElementById('delete-account-btn').addEventListener('click', function() {
+    if (confirm("Are you sure you want to delete your account? This action is irreversible.")) {
+        // Dërgo kërkesën për të fshirë përdoruesin
+        fetch('deleteUser.php', {
+            method: 'POST',
+            body: JSON.stringify({ userId: '123' }),  // Zëvendësoni '123' me ID-në e përdoruesit të cilin dëshironi ta fshini
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert("Your account has been deleted.");
+                window.location.href = 'goodbye.html'; // Rruga kur përdoruesi fshihet
+            } else {
+                alert("Failed to delete account. Please try again.");
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    }
+});
+
     </script>
 </body>
 </html>
