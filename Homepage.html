@@ -199,80 +199,126 @@
       </footer>
 
       <script>
-
-        document.addEventListener('DOMContentLoaded', function() {
-  
-          const homeLink = document.getElementById('home-link');
-          const postsLink = document.getElementById('posts-link');
-          const statisticsLink = document.getElementById('statistics-link');
-          const profileLink = document.getElementById('profile-link');
-          const signupLink = document.getElementById('signup-link');
-          const loginLink = document.getElementById('login-link');
+        document.addEventListener("DOMContentLoaded", function () {
+          const homeLink = document.getElementById("home-link");
+          const exploreLink = document.getElementById("explore-link");
+          const postsLink = document.getElementById("posts-link");
+          const statisticsLink = document.getElementById("statistics-link");
+          const profileLink = document.getElementById("profile-link");
+          const signupLink = document.getElementById("signup-link");
+          const loginLink = document.getElementById("login-link");
           const privateTabs = document.querySelectorAll("[requires-auth]");
           const guestElements = document.querySelectorAll("[guest]");
+          const postCards = document.querySelectorAll(".post");
+          const goLeft = document.querySelector(".go-left");
+          const goRight = document.querySelector(".go-right");
   
           function redirectTo(pageUrl) {
             window.location.href = pageUrl;
-          }     
+          }
   
-          homeLink.addEventListener('click', function() {
-            redirectTo('Homepage.html'); // Shko në Homepage
+          homeLink.addEventListener("click", function () {
+            redirectTo("Homepage.html"); // Shko ne Homepage
           });
   
-        postsLink.addEventListener('click', function() {
-          redirectTo('MyPosts.html'); // Shko në My Posts
-        });
-  
-        statisticsLink.addEventListener('click', function() {
-          redirectTo('Statistics.html'); // Shko në Statistics
-        });
-  
-        profileLink.addEventListener('click', function() {
-          redirectTo('Profile.html'); // Shko në Profile
-        });
-  
-        signupLink.addEventListener('click', function() {
-          redirectTo('SignUp.html'); // Shko në Sign Up
-        });
-  
-        loginLink.addEventListener('click', function() {
-          redirectTo('Login.html'); // Shko në Login
-        });
-  
-  const togglePrivateTabsVisibility = (isVisible) => {
-        if (isVisible)
-          privateTabs.forEach((tab) => {
-            tab.classList.remove("hidden");
+          exploreLink.addEventListener("click", function () {
+            redirectTo("Explore.html"); // Shko te explore
           });
-        else
-          privateTabs.forEach((tab) => {
-            tab.classList.add("hidden");
-          });
-      };
   
-      const toggleGuestElementsVisibility = (isVisible) => {
-        console.log('comes here!!')
-        console.log('isVisible', isVisible)
-        console.log('guestElements: ', guestElements)
-        if (isVisible)
-          guestElements.forEach((tab) => {
-            tab.classList.remove("hidden");
+          postsLink.addEventListener("click", function () {
+            redirectTo("MyPosts.html"); // Shko ne My Posts
           });
-        else
-          guestElements.forEach((tab) => {
-            tab.classList.add("hidden");
+  
+          statisticsLink.addEventListener("click", function () {
+            redirectTo("Statistics.html"); // Shko ne Statistics
           });
-      };
   
-      const isLoggedIn = localStorage.getItem('isLoggedIn')
-        if(isLoggedIn){
-          togglePrivateTabsVisibility(true)
-          toggleGuestElementsVisibility(false)
-        }
+          profileLink.addEventListener("click", function () {
+            redirectTo("Profile.html"); // Shko ne Profile
+          });
   
+          signupLink.addEventListener("click", function () {
+            redirectTo("SignUp.html"); // Shko ne Sign Up
+          });
+  
+          loginLink.addEventListener("click", function () {
+            redirectTo("Login.html"); // Shko ne Login
+          });
+  
+          const togglePrivateTabsVisibility = (isVisible) => {
+            if (isVisible)
+              privateTabs.forEach((tab) => {
+                tab.classList.remove("hidden");
+              });
+            else
+              privateTabs.forEach((tab) => {
+                tab.classList.add("hidden");
+              });
+          };
+  
+          const toggleGuestElementsVisibility = (isVisible) => {
+            console.log("comes here!!");
+            console.log("isVisible", isVisible);
+            console.log("guestElements: ", guestElements);
+            if (isVisible)
+              guestElements.forEach((tab) => {
+                tab.classList.remove("hidden");
+              });
+            else
+              guestElements.forEach((tab) => {
+                tab.classList.add("hidden");
+              });
+          };
+  
+          const isLoggedIn = localStorage.getItem("isLoggedIn");
+          if (isLoggedIn) {
+            togglePrivateTabsVisibility(true);
+            toggleGuestElementsVisibility(false);
+          }
+  
+          ////////////////carousel part//////////////////////
+  
+          const toggleVisiblePosts = (startAt) => {
+            const visiblePostsIndexes = [];
+            for (let i = 0; i < postsToShow; i++) {
+              const position = i + startAt;
+              if (position < postCards.length) visiblePostsIndexes.push(position);
+              else visiblePostsIndexes.push(position % postCards.length);
+            }
+            console.log("visiblePostsIndexes", visiblePostsIndexes);
+            postCards.forEach((post, index) => {
+              if (visiblePostsIndexes.includes(index))
+                post.classList.remove("hidden");
+              else post.classList.add("hidden");
+            });
+          };
+  
+          let postsToShow = 3;
+          let startAt = 0;
+  
+          if(window.screen.width <= 768) postsToShow = 1
+          else if(window.screen.width > 768 && window.screen.width <= 1200) postsToShow = 2
+          else postsToShow = 3
+  
+          toggleVisiblePosts(startAt);
+  
+          goLeft.addEventListener("click", function () {
+            if (startAt - postsToShow < 0)
+              startAt = postCards.length + (startAt - postsToShow);
+            else startAt = startAt - postsToShow;
+  
+            toggleVisiblePosts(startAt)
+          });
+  
+          goRight.addEventListener('click', function(){
+            if(startAt + postsToShow === postCards.length -1) startAt = 0
+            else startAt = startAt + postsToShow
+  
+            toggleVisiblePosts(startAt)
+          })
+  
+          ///////////////end of carousel////////////////////
         });
-  
-  
       </script>
 
 </body>
