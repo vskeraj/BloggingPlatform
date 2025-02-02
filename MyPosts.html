@@ -189,39 +189,46 @@
     </div>
     <script>
       document.addEventListener('DOMContentLoaded', function() {
-    fetchPosts();
-  });
+    loadPosts();
+});
 
-  // Funksioni për të marrë postimet nga backend
-  function fetchPosts() {
-    fetch('getPosts.php')
-      .then(response => response.json())
-      .then(data => {
-        data.forEach(post => {
-          addPost(post.title, post.content, post.image);
-        });
-      })
-      .catch(error => console.error('Error:', error));
-  }
+// Funksioni për të ngarkuar postet nga localStorage
+function loadPosts() {
+    var posts = JSON.parse(localStorage.getItem('posts')) || [];
+    var postContainer = document.getElementById('postsContainer');
+    postContainer.innerHTML = ''; // Pastro përmbajtjen ekzistuese
 
-  // Funksioni për të shtuar postin në faqen HTML
-  function addPost(title, content, imageUrl) {
-    const postContainer = document.getElementById('postsContainer');
-    const newPost = document.createElement('div');
-    newPost.classList.add('post');
-    
-    newPost.innerHTML = `
-      <div class="image-container">
-        <img src="${imageUrl}" alt="Post Image" />
-      </div>
-      <div class="main-info">
-        <h3>${title}</h3>
-        <p>${content}</p>
-      </div>
-    `;
-    
-    postContainer.appendChild(newPost);
-  }
+    if (posts.length === 0) {
+        postContainer.innerHTML = "<p>No posts available.</p>";
+        return;
+    }
+
+    posts.forEach((post, index) => {
+        const newPost = document.createElement('div');
+        newPost.classList.add('post');
+        newPost.innerHTML = `
+            <div class="image-container">
+                <img src="${post.image}" alt="Post Image" />
+            </div>
+            <div class="main-info">
+                <h3>${post.title}</h3>
+                <p>${post.content}</p>
+                <p><strong>Author:</strong> ${post.author}</p>
+                <button class="delete-post" onclick="deletePost(${index})">Delete</button>
+            </div>
+        `;
+        postContainer.appendChild(newPost);
+    });
+}
+
+// Funksioni për të fshirë një post
+function deletePost(index) {
+    var posts = JSON.parse(localStorage.getItem('posts')) || [];
+    posts.splice(index, 1); // Fshij postin
+    localStorage.setItem('posts', JSON.stringify(posts)); // Përditëso localStorage
+    loadPosts(); // Rifresko listën e postimeve
+}
+
 </script>
 
 </body>
