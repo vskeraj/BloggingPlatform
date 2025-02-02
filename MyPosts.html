@@ -49,7 +49,7 @@
                 <div>
                   <p>I start my day with coffee, a quick stretch, and a to-do list. It’s a small routine, but it keeps me focused and energized all day</p>
                 </div>
-                <button class="read-more" onclick="window.location.href='postipare.html'">Read More</button> 
+                <button class="read-more" onclick="window.location.href='postipare.php'">Read More</button> 
               </div>
             </div>
             
@@ -167,8 +167,8 @@
     <footer>
       <ul class="Reference">
         <p>Help</p>
-        <li><a href=""></a>Help Center</li>
-        <li><a href=""></a>Ask Questions</li>
+        <li><a href="helpcenter.html">Help Center</a></li>
+        <li><a href="askquestion.html">Ask Questions</a></li>
       </ul>
 
       <ul class="Reference">
@@ -183,108 +183,48 @@
         <li>Vesa Skeraj</li>
       </ul>
     </footer>
-
+    </body>
+    <div id="postsContainer">
+      <!-- Postimet do të shfaqen këtu -->
+    </div>
     <script>
-
       document.addEventListener('DOMContentLoaded', function() {
+    fetchPosts();
+  });
 
-        const homeLink = document.getElementById('home-link');
-        const postsLink = document.getElementById('posts-link');
-        const statisticsLink = document.getElementById('statistics-link');
-        const profileLink = document.getElementById('profile-link');
-        const signupLink = document.getElementById('signup-link');
-        const loginLink = document.getElementById('login-link');
-        const guestElements = document.querySelectorAll("[guest]")
-
-
-        function redirectTo(pageUrl) {
-          window.location.href = pageUrl;
-        }     
-
-        homeLink.addEventListener('click', function() {
-          redirectTo('Homepage.html');
+  // Funksioni për të marrë postimet nga backend
+  function fetchPosts() {
+    fetch('getPosts.php')
+      .then(response => response.json())
+      .then(data => {
+        data.forEach(post => {
+          addPost(post.title, post.content, post.image);
         });
+      })
+      .catch(error => console.error('Error:', error));
+  }
 
-      postsLink.addEventListener('click', function() {
-        redirectTo('MyPosts.html');
-      });
+  // Funksioni për të shtuar postin në faqen HTML
+  function addPost(title, content, imageUrl) {
+    const postContainer = document.getElementById('postsContainer');
+    const newPost = document.createElement('div');
+    newPost.classList.add('post');
+    
+    newPost.innerHTML = `
+      <div class="image-container">
+        <img src="${imageUrl}" alt="Post Image" />
+      </div>
+      <div class="main-info">
+        <h3>${title}</h3>
+        <p>${content}</p>
+      </div>
+    `;
+    
+    postContainer.appendChild(newPost);
+  }
+</script>
 
-      statisticsLink.addEventListener('click', function() {
-        redirectTo('Statistics.html'); 
-      });
-
-      profileLink.addEventListener('click', function() {
-        redirectTo('Profile.html'); 
-      });
-
-      signupLink.addEventListener('click', function() {
-        redirectTo('SignUp.html'); 
-      });
-
-      loginLink.addEventListener('click', function() {
-        redirectTo('Login.html');
-      });
-
-      const 
-togglePrivateTabsVisibility = (isVisible)=> {
-
-if (isVisible)
-
-privateTabs.forEach((tab)=> {
-
-tab.classList.remove("hidden");
-
-});
-
-else
-
-privateTabs.forEach((tab)=> {
-
-tab.classList.add("hidden");
-
-});
-
-};
-
-const toggleGuestElementsVisibility = (isVisible)=> {
-
-console.log('comes here!!')
-
-console.log('isVisible',
-isVisible)
-
-console.log('guestElements: ',
-guestElements)
-
-if (isVisible)
-
-guestElements.forEach((tab)=> {
-
-tab.classList.remove("hidden");
-
-});
-
-else
-
-guestElements.forEach((tab)=> {
-
-tab.classList.add("hidden");
-
-});
-
-};
-
-      const isSignedUp = localStorage.getItem('isSignedUp')
-
-if(isSignedUp){
-
-togglePrivateTabsVisibility(true)
-
-toggleGuestElementsVisibility(false)
-
-}
-      });
-
-    </script>
-  </body>
+</body>
 </html>
+
+
