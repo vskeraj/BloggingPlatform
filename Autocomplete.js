@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   loginLink.addEventListener('click', function() {
-    redirectTo('Login2.html'); // Shko ne Login
+    redirectTo('Login.html'); // Shko ne Login
   });
 
 const togglePrivateTabsVisibility = (isVisible) => {
